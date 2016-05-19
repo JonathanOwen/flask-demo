@@ -7,6 +7,8 @@ Requests, Heroku, and Bokeh for visualization.
 The repository contains a basic template for a Flask configuration that will
 work on Heroku.
 
+*The repository was cloned from https://github.com/thedataincubator/flask-demo on May 19, 2016*
+
 A [finished example](https://lemurian.herokuapp.com) that demonstrates some basic functionality.
 
 ## Step 1: Setup and deploy
