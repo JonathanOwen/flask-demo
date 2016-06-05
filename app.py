@@ -11,9 +11,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return redirect('/graph')
+    return redirect('/index')
 
-@app.route('/graph')
+@app.route('/index')
 def graph():
     stock = 'AAPL'
 
@@ -34,7 +34,7 @@ def graph():
     p.line(x, y, line_color = 'blue')
 
     script, div = components(p)
-    return render_template('graph.html', script=script, div=div)
+    return render_template('index.html', script=script, div=div)
 
 if __name__ == '__main__':
     app.run(port=33507)
