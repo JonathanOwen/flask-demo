@@ -11,10 +11,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return redirect('/index')
+    return redirect('/graph')
 
-@app.route('/index')
-def index():
+@app.route('/graph')
+def graph():
     stock = 'AAPL'
 
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
@@ -27,16 +27,14 @@ def index():
     stock_df = pd.DataFrame(stock_json['data'], columns=stock_json['column_names'])
     stock_df.set_index(pd.to_datetime(stock_df["Date"]), inplace=True)
 
-#    output_notebook()
     p = figure(tools='pan,box_zoom,reset,save', title='ticker symbol: %s' % stock,
            x_axis_label='date', x_axis_type='datetime')
     x = stock_df.index
     y = stock_df['Close']
     p.line(x, y, line_color = 'blue')
-#    show(p)
 
     script, div = components(p)
-    return render_template('index.html', script=script, div=div)
+    return render_template('graph.html', script=script, div=div)
 
 if __name__ == '__main__':
     app.run(port=33507)
